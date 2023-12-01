@@ -1,8 +1,12 @@
+# GITVERSION SH
+
 ### Execução:
 
 ```
-export GIT_HASH=c2db8f2a7ae5b225f085c9deb30b0f6b48b027df
+export GIT_HASH=f012a0cc40a4bf64458bd6e6dea1ddb549ec495e
+
 version=$(wget -qO- https://raw.githubusercontent.com/gilberto-maess/semversh/master/script.sh | bash -)
+
 echo $version
 ```
 
