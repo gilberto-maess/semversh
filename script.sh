@@ -13,7 +13,6 @@ PATCH=0
 COMMITS=$(git log --oneline $GIT_HASH..HEAD | tac)
 
 while read -r commit; do
-  echo $commit
   TIPO=$(echo "$commit" | awk '{print $2}')
   case "$TIPO" in
     "major:")
