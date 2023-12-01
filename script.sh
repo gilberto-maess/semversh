@@ -9,30 +9,36 @@ MAJOR=0
 MINOR=0
 PATCH=0
 
-COMMITS=$(git log --oneline $GIT_HASH..HEAD)
+# Inverta a ordem dos commits antes de processá-los
+COMMITS=$(git log --oneline $GIT_HASH..HEAD | tac)
 
 while read -r commit; do
-echo $commit
+  echo $commit
   TIPO=$(echo "$commit" | awk '{print $2}')
-  echo $TIPO
   case "$TIPO" in
+    "major:")
+      ((MAJOR++))
+      MINOR=0
+      PATCH=0
+      ;;
+    "break:")
+      ((MAJOR++))
+      MINOR=0
+      PATCH=0
+      ;;
+    "minor:")
+      ((MINOR++))
+      PATCH=0
+      ;;
+    "feat:")
+      ((MINOR++))
+      PATCH=0
+      ;;
     "fix:")
       ((PATCH++))
       ;;
     "patch:")
       ((PATCH++))
-      ;;
-    "feat:")
-      ((MINOR++))
-      ;;
-    "minor:")
-      ((MINOR++))
-      ;;
-    "major:")
-      ((MAJOR++))
-      ;;
-    "break:")
-      ((MAJOR++))
       ;;
     *)
       ;;
