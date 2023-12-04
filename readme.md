@@ -1,5 +1,8 @@
 # GITVERSION SH
 
+Chega de instalar dependências desnecessárias para obter uma simples versão semântica embasadas nos commits git.
+Seinta-se à vontade para contribuir.
+
 ### Execução:
 
 ```
